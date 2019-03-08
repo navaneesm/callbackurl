@@ -39,7 +39,7 @@ app.post('/', function(req, res){
 	console.log(req.query.handler);
 	console.log(req.body.handler);
 	var a = (req.params.handler).toString();
-  res.end('world' + a);
+  res.end('world' + req.params.handler);
 });
 
 app.listen(process.env.PORT || 5000);
