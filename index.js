@@ -25,11 +25,11 @@
 var express = require('express');
 var app = express();
 // parse application/json
-//app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }))
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+   extended: true
+ }))
+//app.use(express.json());
 
 
 app.post('/', function(req, res){
