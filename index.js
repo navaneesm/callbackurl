@@ -1,6 +1,6 @@
 const http = require('http');
 
-const port = 8080;
+const PORT = process.env.PORT || 5000
 const server = http.createServer((req, res) => {
 	var text = {
 		text : "ngrok"
