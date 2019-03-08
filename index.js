@@ -24,8 +24,6 @@
 
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
-
 // parse application/json
 //app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({
@@ -35,11 +33,7 @@ app.use(express.json());
 
 
 app.post('/', function(req, res){
-	console.log(req.params.handler);
-	console.log(req.query.handler);
-	console.log(req.body.handler);
-	var a = (req.params.handler).toString();
-  res.end('world' + req.params.handler);
+  res.end((req.params.handler).toString());
 });
 
 app.listen(process.env.PORT || 5000);
