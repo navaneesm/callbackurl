@@ -33,7 +33,7 @@ app.use(express.json());
 
 
 app.post('/', function(req, res){
-  res.end((req.params.handler).toString());
+  res.send(req.params.handler);
 });
 
 app.listen(process.env.PORT || 5000);
