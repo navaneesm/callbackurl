@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 
 
 app.post('/', function(req, res){
-  res.send(req.body);
+  res.json(req.body);
 });
 
 app.listen(process.env.PORT || 5000);
