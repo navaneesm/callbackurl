@@ -73,9 +73,9 @@ app.post('/', function(req, res){
 		entry.imageurl = "https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif";
 		list.push(entry);
 		var entry1 = {};
-		entry.title = "Tip 2 😲";
-		entry.description = "You can show upto a maximum of 50 command suggestions. :surprise:";
-		entry.imageurl = "https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif";
+		entry1.title = "Tip 2 😲";
+		entry1.description = "You can show upto a maximum of 50 command suggestions. :surprise:";
+		entry1.imageurl = "https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif";
 		list.push(entry1);
 		output.push(list);
 	}
