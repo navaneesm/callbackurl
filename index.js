@@ -27,12 +27,13 @@ app.post('/', function(req, res){
 		}
 		else if(componentName == "invokeFunctionCommand")
 		{
-			var inputs = [];
-			inputs.push({"type":"text","name":"username","label":"Name","hint":"Please enter your name","placeholder":"Scott Fisher","mandatory":true,"value":"Scott Fisher"});
-			inputs.push({"type":"text","format":"email","name":"email","label":"Email","hint":"Enter your email address","placeholder":"scott.fisher@zylker.com","mandatory":true,"value":"scott.fisher@zylker.com"});
-			inputs.push({"type":"select","trigger_on_change":true,"name":"asset-type","label":"Asset Type","hint":"Choose your request asset type.","placeholder":"Mobile","mandatory":true,"options":[{"label":"Laptop","value":"laptop"},{"label":"Mobile","value":"mobile"}]});
-			var forms = {"type":"form","title":"Asset Request","hint":"Raise your asset request.","name":"ID","version":1,"button_label":"Raise Request","actions":{"submit":{"type":"invoke.function","name":"urlFunForm"}},"inputs":inputs};
-			output.forms = forms;
+// 			var inputs = [];
+// 			inputs.push({"type":"text","name":"username","label":"Name","hint":"Please enter your name","placeholder":"Scott Fisher","mandatory":true,"value":"Scott Fisher"});
+// 			inputs.push({"type":"text","format":"email","name":"email","label":"Email","hint":"Enter your email address","placeholder":"scott.fisher@zylker.com","mandatory":true,"value":"scott.fisher@zylker.com"});
+// 			inputs.push({"type":"select","trigger_on_change":true,"name":"asset-type","label":"Asset Type","hint":"Choose your request asset type.","placeholder":"Mobile","mandatory":true,"options":[{"label":"Laptop","value":"laptop"},{"label":"Mobile","value":"mobile"}]});
+// 			var forms = {"type":"form","title":"Asset Request","hint":"Raise your asset request.","name":"ID","version":1,"button_label":"Raise Request","actions":{"submit":{"type":"invoke.function","name":"urlFunForm"}},"inputs":inputs};
+// 			output.forms = forms;
+			output = {"version":1,"inputs":[{"label":"Name","name":"username","type":"text","value":"Scott Fisher","mandatory":true,"placeholder":"Scott Fisher","hint":"Please enter your name"},{"label":"Email","name":"email","type":"text","value":"scott.fisher@zylker.com","mandatory":true,"format":"email","placeholder":"scott.fisher@zylker.com","hint":"Enter your email address"},{"label":"Asset Type","name":"asset-type","options":[{"label":"Laptop","value":"laptop"},{"label":"Mobile","value":"mobile"}],"type":"select","trigger_on_change":true,"mandatory":true,"placeholder":"Mobile","hint":"Choose your request asset type."}],"name":"ID","type":"form","button_label":"Raise Request","actions":{"submit":{"name":"function","type":"invoke.function"}},"title":"Asset Request","hint":"Raise your asset request."};
 		}
 	}
 	else if(handler == 1001)	//Command suggestion handler reponse
