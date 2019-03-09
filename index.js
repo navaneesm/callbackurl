@@ -63,7 +63,7 @@ app.post('/', function(req, res){
 			output.forms = forms;
 		}
 	}
-	else if(handlerType == 1001)
+	else if(handler == 1001)
 	{
 		var output = [];
 		var list = [];
