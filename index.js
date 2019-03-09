@@ -66,18 +66,16 @@ app.post('/', function(req, res){
 	else if(handler == 1001)
 	{
 		var output = [];
-		var list = [];
 		var entry = {};
 		entry.title = "Tip 1 👋";
 		entry.description = "Command suggestions are helpful when you have to choose from a list of entities!";
 		entry.imageurl = "https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif";
-		list.push(entry);
+		output.push(entry);
 		var entry1 = {};
 		entry1.title = "Tip 2 😲";
 		entry1.description = "You can show upto a maximum of 50 command suggestions. :surprise:";
 		entry1.imageurl = "https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif";
-		list.push(entry1);
-		output.push(list);
+		output.push(entry1);
 	}
 	response.output = output;
   	res.send(response);
