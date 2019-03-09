@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
 		result : output
 	}
 	console.log(`incoming`);
-    res.end(JSON.stringify(response));
+    res.send(JSON.stringify(response));
 });
 
 server.listen(port, (err) => {
