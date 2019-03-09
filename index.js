@@ -1,31 +1,3 @@
-
-// var express = require('express');
-// var app = express();
-// var bodyParser = require('body-parser');
-
-// // parse application/json
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//    extended: true
-//  }));
-
-// //Handle POST request
-// app.post('/', function(req, res){
-
-// 	var handler = req.body.handler;
-// 	var response = {};
-// 	var output = {};
-// 	if(handler == 1000)
-// 	{
-// 		output.text = "Hi navanee ! Slash commands are short cuts to perform tasks. Commands can also provide suggestions, just configure the command suggestion handler! :smile:";
-// 	}
-// 	response.output = output;
-//   	res.send(response);
-// });
-
-// app.listen(process.env.PORT || 5000);
-
-
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -42,7 +14,7 @@ app.post('/', function(req, res){
 	var handler = req.body.handler;
 	var componentName = req.body.name;
 	var response = {};
-	if(handler == 1000)
+	if(handler == 1000)	//Command execution handler reponse
 	{
 		var output = {};
 		if(componentName == "normalCommand")
@@ -63,7 +35,7 @@ app.post('/', function(req, res){
 			output.forms = forms;
 		}
 	}
-	else if(handler == 1001)
+	else if(handler == 1001)	//Command suggestion handler reponse
 	{
 		var output = [];
 		var entry = {};
