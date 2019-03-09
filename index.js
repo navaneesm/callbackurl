@@ -60,7 +60,6 @@
 
 
 
-
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -75,14 +74,16 @@ app.use(bodyParser.urlencoded({
 app.post('/', function(req, res){
 
 	var handler = req.body.handler;
-	var output = {};
+	var response = {};
+	var response.output = {};
 	if(handler == 1000)
 	{
 		output.text = "Hi navanee ! Slash commands are short cuts to perform tasks. Commands can also provide suggestions, just configure the command suggestion handler! :smile:";
 	}
 
-  	res.send(output);
+  	res.send(response);
 });
 
 app.listen(process.env.PORT || 5000);
+
 
