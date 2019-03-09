@@ -47,7 +47,7 @@ var text = {
 	}
 
 app.post('/', function(req, res){
-  res.json(response);
+  res.send(response);
 });
 
 app.listen(process.env.PORT || 5000);
