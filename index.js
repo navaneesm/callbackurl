@@ -23,7 +23,7 @@ app.post('/', function(req, res){
 		}
 		else if(componentName == "suggestionCommand")
 		{
-			output.text = "Hi you have selected " + req.body.params.selections.length + "suggestions";	
+			output.text = "Hi you have selected " + req.body.params.selections.length + " suggestions";	
 		}
 		else if(componentName == "invokeFunctionCommand")
 		{
