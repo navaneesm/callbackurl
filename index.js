@@ -75,7 +75,7 @@ app.post('/', function(req, res){
 
 	var handler = req.body.handler;
 	var response = {};
-	var response.output = {};
+	response.output = {};
 	if(handler == 1000)
 	{
 		output.text = "Hi navanee ! Slash commands are short cuts to perform tasks. Commands can also provide suggestions, just configure the command suggestion handler! :smile:";
