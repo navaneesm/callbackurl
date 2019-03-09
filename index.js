@@ -25,7 +25,7 @@ app.post('/', function(req, res){
 		{
 			output.text = "Hi you have selected " + req.body.params.selections.length + " suggestions";	
 		}
-		else if(componentName == "invokeFunctionCommand")
+		else if(componentName == "invokeFunctionComman")
 		{
 // 			var inputs = [];
 // 			inputs.push({"type":"text","name":"username","label":"Name","hint":"Please enter your name","placeholder":"Scott Fisher","mandatory":true,"value":"Scott Fisher"});
