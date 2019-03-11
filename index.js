@@ -37,7 +37,8 @@ app.post('/', function(req, res){
 		}
 		else if(componentName == "invokeBtn")	//required consents  --  		//invoke's button function
 		{
-			output = {"text":"[What's this?](invoke.function|dreButtonFunction)"};
+			//output = {"text":"[What's this?](invoke.function|dreButtonFunction)"};
+			output = {"buttons":[{"label":"Create Webhook","type":"+","action":{"confirm":{"input":{"type":"user_webhook_token"},"description":"Connect to GitLab Projects from within Cliq","title":"Generate Webhooks for a GitLab Project"},"type":"invoke.function","data":{"name":"authentication"}}}],"text":"Click on the token generation button below!"};
 		}
 	}
 	else if(handler == 1001)	//Command suggestion handler response.     			//required consents  -- 
