@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({
 //Handle POST request
 app.post('/', function(req, res){
 	console.log("Request body" + JSON.stringify(req.body));
-	console.log("Given params :- "));
+	console.log("Given params :- ");
 	for(param in req.body.params)
 	{
-		console.log(param));
+		console.log(param);
 	}
 	var handler = req.body.handler;
 	var componentName = req.body.name;
