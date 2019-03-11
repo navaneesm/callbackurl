@@ -34,7 +34,7 @@ app.post('/', function(req, res){
 	{
 		output = [{"description":"Command suggestions are helpful when you have to choose from a list of entities!","imageurl":"https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif","title":"Tip 1 👋"},{"description":"You can show upto a maximum of 50 command suggestions. :surprise:","imageurl":"https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif","title":"Tip 2 😲"}];
 	}
-	else if(handlerType.equals(2001))	//Form submit handler response
+	else if(handler == 2001)	//Form submit handler response
 	{
 
 		form = req.body.params.form;
