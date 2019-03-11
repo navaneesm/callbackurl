@@ -41,7 +41,7 @@ app.post('/', function(req, res){
 		console.log("inside form submit handler");
 		form = req.body.params.form;
 		formValues = form.values;
-		if(formValues.asset-type.get.value == "mobile")
+		if(formValues["asset-type"].value == "mobile")
 		{
 			output = {"text":"Hi " + formValues.username + ", thanks for raising your request. Your request will be processed based on the device availability.","card":{"title":"Asset Request"},"slides":[{"type":"label","title":"","data":[{"Asset Type":formValues.asset-type.label},{"Preferred OS ":formValues.mobile-os.label},{"Preferred Device":formValues.mobile-list.label}]}]};
 		}
@@ -86,6 +86,42 @@ app.post('/', function(req, res){
 			}
 		}
 		output = {"type":"form_modification","actions":actions};
+	}
+	else if(handler == 2003)	//Form dynamic input handler response
+	{
+		console.log("inside dynamic input handler");
+		var target = req.body.params.target;
+		var form = req.body.params.form;
+		var searchValue = target.query;
+		if(target.name == "mobile-list" && form.values.["mobile-os"])
+		{
+			var androidDevicesList = ["One Plus 6T","One Plus 6","Google Pixel 3","Google Pixel 2XL"];
+			var iOSDevicesList = ["IPhone XR","IPhone XS","IPhone X","Iphone 8 Plus"];
+			var deviceType = form.values.["mobile-os"].value;
+			if(deviceType == "android")
+			{
+				var typeList = [];
+				androidDevicesList.forEach(function(elem) {
+			        console.log(elem);
+			        if(elem == searchValue)
+			        {
+			        	typeList.push({"label":androidDevice,"value":androidDevice.replaceAll(" ","_")});
+			        }
+			    });
+			}
+			else
+			{
+				var typeList = [];
+				iOSDevicesList.forEach(function(elem) {
+			        console.log(elem);
+			        if(elem == searchValue)
+			        {
+			        	typeList.push({"label":iOSDevice,"value":iOSDevice.replaceAll(" ","_")});
+			        }
+			    });
+			}
+		}
+		output = {"options",typeList};
 	}
 
 	response.output = output;
