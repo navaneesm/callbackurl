@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 
 //Handle POST request
 app.post('/', function(req, res){
-	console.log("Request body" + req.body);
+	console.log("Request body" + JSON.stringify(req.body));
 	var handler = req.body.handler;
 	var componentName = req.body.name;
 	var response = {};
@@ -55,8 +55,8 @@ app.post('/', function(req, res){
 		console.log("inside form change handler");
 		var targetName = req.body.params.target.name;
 		var inputValues = req.body.params.form.values;
-		console.log("form values " + req.body.params.form);
-		console.log("form target values " + req.body.form.values);
+		console.log("form values " + JSON.stringify(targetName));
+		console.log("form target values " + JSON.stringify(inputValues));
 		var actions = [];
 		if(targetName  == "asset-type")
 		{
