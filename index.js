@@ -35,11 +35,19 @@ app.post('/', function(req, res){
 		{
 			output = {"version":1,"inputs":[{"label":"Name","name":"username","type":"text","value":"Scott Fisher","mandatory":true,"placeholder":"Scott Fisher","hint":"Please enter your name"},{"label":"Email","name":"email","type":"text","value":"scott.fisher@zylker.com","mandatory":true,"format":"email","placeholder":"scott.fisher@zylker.com","hint":"Enter your email address"},{"label":"Asset Type","name":"asset-type","options":[{"label":"Laptop","value":"laptop"},{"label":"Mobile","value":"mobile"}],"type":"select","trigger_on_change":true,"mandatory":true,"placeholder":"Mobile","hint":"Choose your request asset type."}],"name":"ID","type":"form","button_label":"Raise Request","actions":{"submit":{"name":"function","type":"invoke.function"}},"title":"Asset Request","hint":"Raise your asset request."};
 		}
+		else if(componentName == "invokeBtn")	//required consents  --  		//invoke's button function
+		{
+			output = {"text":"[What's this?](invoke.function|dreButtonFunction)"};
+		}
 	}
 	else if(handler == 1001)	//Command suggestion handler response.     			//required consents  -- 
 	{
 		console.log("inside command suggestion handler");
 		output = [{"description":"Command suggestions are helpful when you have to choose from a list of entities!","imageurl":"https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif","title":"Tip 1 👋"},{"description":"You can show upto a maximum of 50 command suggestions. :surprise:","imageurl":"https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif","title":"Tip 2 😲"}];
+	}
+	else if(handler == 2000)	//Funciton button handler
+	{
+		output = {"text","Isn't the instant button super fantabulous? 😲\nFunctions work with buttons. There are two types of buttons - Message Card Buttons and Instant Buttons."};
 	}
 	else if(handler == 2001)	//Form submit handler response
 	{
