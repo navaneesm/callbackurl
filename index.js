@@ -60,7 +60,7 @@ app.post('/', function(req, res){
 		var actions = [];
 		if(targetName  == "asset-type")
 		{
-			fieldValue = inputValues.asset-type.value;
+			fieldValue = inputValues["asset-type"].value;
 			if(fieldValue == "laptop")
 			{
 				actions.push({"type":"add_after","name":"asset-type","input":{"type":"select","name":"os-type","label":"Laptop Type","hint":"Choose your preferred OS Type","placeholder":"Ubuntu","mandatory":true,"options":[{"label":"Mac OS X","value":"mac"},{"label":"Windows","value":"windows"},{"label":"Ubuntu","value":"ubuntu"}]}});
