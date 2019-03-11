@@ -51,7 +51,7 @@ app.post('/', function(req, res){
 	else if(handler == 2002)	//Form change handler response
 	{
 		var targetName = req.body.params.target.name;
-		var inputValues = req.body.params.form.get.values;
+		var inputValues = req.body.params.form.values;
 		var actions = [];
 		if(targetName  == "asset-type")
 		{
