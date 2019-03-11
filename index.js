@@ -129,7 +129,7 @@ app.post('/', function(req, res){
 		console.log("inside bot welcome handler");
 		output = {"text" : req.body.params.name + " bot welcomes you!"};
 	}
-	else if(handlerType.equals(0))	//Bot message handler. 		//required consents  --  message
+	else if(handler == 0)	//Bot message handler. 		//required consents  --  message
 	{
 		console.log("inside bot message handler");
 		var message = req.body.params.message;
@@ -142,12 +142,12 @@ app.post('/', function(req, res){
 			output = {"text" : "You said " + message};
 		}
 	}
-	else if(handlerType.equals(8))	//Bot mention handler
+	else if(handler == 8)	//Bot mention handler
 	{
 		console.log("inside bot mention handler");
 		output = {"text" : "You mentioned me!"};
 	}
-	else if(handlerType.equals(10))	//Bot context
+	else if(handler == 10)	//Bot context
 	{
 		console.log("inside bot context handler");
 		var answers = req.body.params.answers;
@@ -156,22 +156,22 @@ app.post('/', function(req, res){
 		msgString = msgString + "Sex : " + answers.sex.text + "\n";
 		output = {"text" : "Great! I've got all the info: \n" + msgString};
 	}
-	else if(handlerType.equals(101) || handlerType.equals(102) || handlerType.equals(103) || handlerType.equals(104) || handlerType.equals(105))	//Bot actions
+	else if(handler == 101 || handler == 102 || handler == 103 || handler == 104 || handler == 105)	//Bot actions
 	{
 		console.log("inside bot action handler");
 		output = {"text" : req.body.params.handler_name + " bot action performed"};
 	}
-	else if(handlerType.equals(4000))	//Message action
+	else if(handler == 4000)	//Message action
 	{
 		console.log("inside message action handler");
 		output = {"text" : req.body.params.name + " Message action performed"};
 	}
-	else if(handlerType.equals(3000))	//Installation handler
+	else if(handler == 3000)	//Installation handler
 	{
 		console.log("inside installation handler");
 		output = {"status" : "200","note":["1. Use the bot to resolve issues quicker.","2. Use the slash commands and message actions to keep track for activities"],"message":"We're glad you chose this extension!","title":"Success!","footer":"Contact support@yourdomain.com for any related help / support."};
 	}
-	else if(handlerType.equals(3002))	//Installation validator
+	else if(handler == 3002)	//Installation validator
 	{
 		console.log("inside intallation validator");
 		output = {"status" : "200"};
