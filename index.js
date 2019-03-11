@@ -121,7 +121,7 @@ app.post('/', function(req, res){
 			    });
 			}
 		}
-		output = {"options",typeList};
+		output = {"options" : typeList};
 	}
 
 	response.output = output;
