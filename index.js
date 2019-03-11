@@ -124,7 +124,7 @@ app.post('/', function(req, res){
 		console.log("Dynamic type list  " + typeList);
 		output = {"options" : typeList};
 	}
-	else if(handlerType.equals(5))	//Bot welcome handler
+	else if(handler == 5)	//Bot welcome handler
 	{
 		console.log("inside bot welcome handler");
 		output = {"text" : req.body.params.name + " bot welcomes you!"};
