@@ -48,7 +48,7 @@ app.post('/', function(req, res){
 			output = {"text":"Hi " + formValues.username + ", thanks for raising your request. Your request will be processed based on the device availability.","card":{"title":"Asset Request"},"slides":[{"type":"label","title":"","data":[{"Asset Type":formValues.asset-type.label},{"OS/Device Preferred":formValues.os-type.label}]}]};
 		}
 	}
-	else if(handlerType.equals(2002))	//Form change handler response
+	else if(handler == 2002)	//Form change handler response
 	{
 		var targetName = req.body.params.target.name;
 		var inputValues = req.body.params.form.get.values;
