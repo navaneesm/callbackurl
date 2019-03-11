@@ -164,12 +164,12 @@ app.post('/', function(req, res){
 	else if(handler == 101 || handler == 102 || handler == 103 || handler == 104 || handler == 105)	//Bot actions
 	{
 		console.log("inside bot action handler");
-		output = {"text" : req.body.params.handler_name + " bot action performed"};
+		output = {"text" : req.body.handler_name + " bot action performed"};
 	}
 	else if(handler == 4000)	//Message action
 	{
 		console.log("inside message action handler");
-		output = {"text" : req.body.params.name + " Message action performed"};
+		output = {"text" : req.body.name + " Message action performed"};
 	}
 	else if(handler == 3000)	//Installation handler
 	{
