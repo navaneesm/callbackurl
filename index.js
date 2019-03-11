@@ -97,7 +97,7 @@ app.post('/', function(req, res){
 		{
 			var androidDevicesList = ["One Plus 6T","One Plus 6","Google Pixel 3","Google Pixel 2XL"];
 			var iOSDevicesList = ["IPhone XR","IPhone XS","IPhone X","Iphone 8 Plus"];
-			var deviceType = form.values.["mobile-os"].value;
+			var deviceType = form.values["mobile-os"].value;
 			if(deviceType == "android")
 			{
 				var typeList = [];
