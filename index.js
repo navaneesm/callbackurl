@@ -106,7 +106,7 @@ app.post('/', function(req, res){
 			        if(androidDevice.includes(searchValue))
 			        {
 				        console.log(androidDevice);
-			        	typeList.push({"label":androidDevice,"value":androidDevice.replaceAll(" ","_")});
+			        	typeList.push({"label":androidDevice,"value":androidDevice.replace(/\s+/g,"_")});
 			        }
 			    });
 			}
@@ -116,7 +116,7 @@ app.post('/', function(req, res){
 			        if(iOSDevice.includes(searchValue))
 			        {
 					console.log(iOSDevice);
-			        	typeList.push({"label":iOSDevice,"value":iOSDevice.replaceAll(" ","_")});
+			        	typeList.push({"label":iOSDevice,"value":iOSDevice.replace(/\s+/g,"_")});
 			        }
 			    });
 			}
