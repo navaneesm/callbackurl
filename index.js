@@ -125,6 +125,7 @@ app.post('/', function(req, res){
 	}
 
 	response.output = output;
+	console.log("Execution response " + response);
   	res.send(response);
 });
 
