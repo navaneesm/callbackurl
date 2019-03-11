@@ -26,7 +26,7 @@ app.post('/', function(req, res){
 		{
 			output = {"text":"Hi you have selected " + req.body.params.selections.length + " suggestions and first title is " + req.body.params.selections[0].title};	
 		}
-		else if(componentName == "invokeFunctionCmd")	//required consents  -- 
+		else if(componentName == "invokeFunctionCmd")	//required consents  -- 	//reqired a function named "function"
 		{
 			output = {"version":1,"inputs":[{"label":"Name","name":"username","type":"text","value":"Scott Fisher","mandatory":true,"placeholder":"Scott Fisher","hint":"Please enter your name"},{"label":"Email","name":"email","type":"text","value":"scott.fisher@zylker.com","mandatory":true,"format":"email","placeholder":"scott.fisher@zylker.com","hint":"Enter your email address"},{"label":"Asset Type","name":"asset-type","options":[{"label":"Laptop","value":"laptop"},{"label":"Mobile","value":"mobile"}],"type":"select","trigger_on_change":true,"mandatory":true,"placeholder":"Mobile","hint":"Choose your request asset type."}],"name":"ID","type":"form","button_label":"Raise Request","actions":{"submit":{"name":"function","type":"invoke.function"}},"title":"Asset Request","hint":"Raise your asset request."};
 		}
@@ -123,6 +123,58 @@ app.post('/', function(req, res){
 		}
 		console.log("Dynamic type list  " + typeList);
 		output = {"options" : typeList};
+	}
+	else if(handlerType.equals(5))	//Bot welcome handler
+	{
+		console.log("inside bot welcome handler");
+		output = {"text" : req.body.params.name + " bot welcomes you!"};
+	}
+	else if(handlerType.equals(0))	//Bot message handler. 		//required consents  --  message
+	{
+		console.log("inside bot message handler");
+		var message = req.body.params.message;
+		if(message == "context")
+		{
+			output = {"context":{"timeout":"300","params":[{"question":"Please enter your name.","name":"name"},{"question":"How old are you? :smile:","name":"age"},{"suggestions":{"list":[{"text":"Male"},{"text":"Female"}]},"question":"Gender:","name":"sex"}],"id":"personal_details"},"text":"Welcome to the Zylker Ticket Booking Portal! I'll need a few details to book the ticket."};
+		}	
+		else
+		{
+			output = {"text" : "You said " + message};
+		}
+	}
+	else if(handlerType.equals(8))	//Bot mention handler
+	{
+		console.log("inside bot mention handler");
+		output = {"text" : "You mentioned me!"};
+	}
+	else if(handlerType.equals(10))	//Bot context
+	{
+		console.log("inside bot context handler");
+		var answers = req.body.params.answers;
+		var msgString = "Name : " + answers.name.text + "\n";
+		msgString = msgString + "Age : " + answers.age.text + "\n";
+		msgString = msgString + "Sex : " + answers.sex.text + "\n";
+		output = {"text" : "Great! I've got all the info: \n" + msgString};
+	}
+	else if(handlerType.equals(101) || handlerType.equals(102) || handlerType.equals(103) || handlerType.equals(104) || handlerType.equals(105))	//Bot actions
+	{
+		console.log("inside bot action handler");
+		output = {"text" : req.body.params.handler_name + " bot action performed"};
+	}
+	else if(handlerType.equals(4000))	//Message action
+	{
+		console.log("inside message action handler");
+		output = {"text" : req.body.params.name + " Message action performed"};
+	}
+	else if(handlerType.equals(3000))	//Installation handler
+	{
+		console.log("inside installation handler");
+		output = {"status" : "200","note":["1. Use the bot to resolve issues quicker.","2. Use the slash commands and message actions to keep track for activities"],"message":"We're glad you chose this extension!","title":"Success!","footer":"Contact support@yourdomain.com for any related help / support."};
+	}
+	else if(handlerType.equals(3002))	//Installation validator
+	{
+		console.log("inside intallation validator");
+		output = {"status" : "200"};
 	}
 
 	response.output = output;
