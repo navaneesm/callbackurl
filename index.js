@@ -47,7 +47,7 @@ app.post('/', function(req, res){
 	}
 	else if(handler == 2000)	//Funciton button handler
 	{
-		output = {"text","Isn't the instant button super fantabulous? 😲\nFunctions work with buttons. There are two types of buttons - Message Card Buttons and Instant Buttons."};
+		output = {"text" : "Isn't the instant button super fantabulous? 😲\nFunctions work with buttons. There are two types of buttons - Message Card Buttons and Instant Buttons."};
 	}
 	else if(handler == 2001)	//Form submit handler response
 	{
