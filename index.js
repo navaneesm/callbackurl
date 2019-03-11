@@ -127,7 +127,7 @@ app.post('/', function(req, res){
 	else if(handler == 5)	//Bot welcome handler
 	{
 		console.log("inside bot welcome handler");
-		output = {"text" : req.body.params.name + " bot welcomes you!"};
+		output = {"text" : req.body.name + " bot welcomes you!"};
 	}
 	else if(handler == 0)	//Bot message handler. 		//required consents  --  message
 	{
@@ -178,7 +178,7 @@ app.post('/', function(req, res){
 	}
 
 	response.output = output;
-	console.log("Execution response " + response);
+	console.log("Execution response " + JSON.stringify(response));
   	res.send(response);
 });
 
