@@ -75,7 +75,7 @@ app.post('/', function(req, res){
 		}
 		else if(targetName == "mobile-os")
 		{
-			fieldValue = inputValues.asset-type.value;
+			fieldValue = inputValues["asset-type"].value;
 			if(typeof fieldValue !== "undefined")
 			{
 				actions.push({"type":"add_after","name":"mobile-os","input":{"type":"dynamic_select","name":"mobile-list","label":"Mobile Device","mandatory":true,"placeholder":"Choose your preferred mobile device"}});
