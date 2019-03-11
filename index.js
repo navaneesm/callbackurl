@@ -43,11 +43,11 @@ app.post('/', function(req, res){
 		formValues = form.values;
 		if(formValues["asset-type"].value == "mobile")
 		{
-			output = {"text":"Hi " + formValues.username + ", thanks for raising your request. Your request will be processed based on the device availability.","card":{"title":"Asset Request"},"slides":[{"type":"label","title":"","data":[{"Asset Type":formValues.asset-type.label},{"Preferred OS ":formValues.mobile-os.label},{"Preferred Device":formValues.mobile-list.label}]}]};
+			output = {"text":"Hi " + formValues.username + ", thanks for raising your request. Your request will be processed based on the device availability.","card":{"title":"Asset Request"},"slides":[{"type":"label","title":"","data":[{"Asset Type":formValues["asset-type"].label},{"Preferred OS ":formValues["mobile-os"].label},{"Preferred Device":formValues["mobile-list"].label}]}]};
 		}
 		else
 		{
-			output = {"text":"Hi " + formValues.username + ", thanks for raising your request. Your request will be processed based on the device availability.","card":{"title":"Asset Request"},"slides":[{"type":"label","title":"","data":[{"Asset Type":formValues.asset-type.label},{"OS/Device Preferred":formValues.os-type.label}]}]};
+			output = {"text":"Hi " + formValues.username + ", thanks for raising your request. Your request will be processed based on the device availability.","card":{"title":"Asset Request"},"slides":[{"type":"label","title":"","data":[{"Asset Type":formValues["asset-type"].label},{"OS/Device Preferred":formValues["os-type"].label}]}]};
 		}
 	}
 	else if(handler == 2002)	//Form change handler response
