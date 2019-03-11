@@ -93,7 +93,7 @@ app.post('/', function(req, res){
 		var target = req.body.params.target;
 		var form = req.body.params.form;
 		var searchValue = target.query;
-		if(target.name == "mobile-list" && form.values.["mobile-os"])
+		if(target.name == "mobile-list" && form.values["mobile-os"])
 		{
 			var androidDevicesList = ["One Plus 6T","One Plus 6","Google Pixel 3","Google Pixel 2XL"];
 			var iOSDevicesList = ["IPhone XR","IPhone XS","IPhone X","Iphone 8 Plus"];
