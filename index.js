@@ -10,12 +10,13 @@ app.use(bodyParser.urlencoded({
 
 //Handle POST request
 app.post('/', function(req, res){
-
+	console.log("Request body" + req.body);
 	var handler = req.body.handler;
 	var componentName = req.body.name;
 	var response = {};
 	if(handler == 1000)		//Command execution handler reponse
 	{
+		console.log("inside command execution handler");
 		var output = {};
 		if(componentName == "normalCommand")	//required consents  -- user
 		{
@@ -32,11 +33,12 @@ app.post('/', function(req, res){
 	}
 	else if(handler == 1001)	//Command suggestion handler response.     			//required consents  -- 
 	{
+		console.log("inside command suggestion handler");
 		output = [{"description":"Command suggestions are helpful when you have to choose from a list of entities!","imageurl":"https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif","title":"Tip 1 👋"},{"description":"You can show upto a maximum of 50 command suggestions. :surprise:","imageurl":"https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif","title":"Tip 2 😲"}];
 	}
 	else if(handler == 2001)	//Form submit handler response
 	{
-
+		console.log("inside form submit handler");
 		form = req.body.params.form;
 		formValues = form.values;
 		if(formValues.asset-type.get.value == "mobile")
@@ -50,8 +52,11 @@ app.post('/', function(req, res){
 	}
 	else if(handler == 2002)	//Form change handler response
 	{
+		console.log("inside form change handler");
 		var targetName = req.body.params.target.name;
 		var inputValues = req.body.params.form.values;
+		console.log("form values " + req.body.params.form);
+		console.log("form target values " + req.body.form.values);
 		var actions = [];
 		if(targetName  == "asset-type")
 		{
