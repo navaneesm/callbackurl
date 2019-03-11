@@ -103,9 +103,9 @@ app.post('/', function(req, res){
 			{
 				
 				androidDevicesList.forEach(function(androidDevice) {
-			        console.log(androidDevice);
-			        if(androidDevice == searchValue)
+			        if(androidDevice.includes(searchValue))
 			        {
+				        console.log(androidDevice);
 			        	typeList.push({"label":androidDevice,"value":androidDevice.replaceAll(" ","_")});
 			        }
 			    });
@@ -113,9 +113,9 @@ app.post('/', function(req, res){
 			else
 			{
 				iOSDevicesList.forEach(function(iOSDevice) {
-			        console.log(iOSDevice);
-			        if(iOSDevice == searchValue)
+			        if(iOSDevice.includes(searchValue))
 			        {
+					console.log(iOSDevice);
 			        	typeList.push({"label":iOSDevice,"value":iOSDevice.replaceAll(" ","_")});
 			        }
 			    });
