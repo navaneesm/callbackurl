@@ -95,12 +95,13 @@ app.post('/', function(req, res){
 		var searchValue = target.query;
 		if(target.name == "mobile-list" && form.values["mobile-os"])
 		{
+			var typeList = [];
 			var androidDevicesList = ["One Plus 6T","One Plus 6","Google Pixel 3","Google Pixel 2XL"];
 			var iOSDevicesList = ["IPhone XR","IPhone XS","IPhone X","Iphone 8 Plus"];
 			var deviceType = form.values["mobile-os"].value;
 			if(deviceType == "android")
 			{
-				var typeList = [];
+				
 				androidDevicesList.forEach(function(androidDevice) {
 			        console.log(androidDevice);
 			        if(androidDevice == searchValue)
@@ -111,7 +112,6 @@ app.post('/', function(req, res){
 			}
 			else
 			{
-				var typeList = [];
 				iOSDevicesList.forEach(function(iOSDevice) {
 			        console.log(iOSDevice);
 			        if(iOSDevice == searchValue)
@@ -121,6 +121,7 @@ app.post('/', function(req, res){
 			    });
 			}
 		}
+		console.log("Dynamic type list  " + typeList);
 		output = {"options" : typeList};
 	}
 
