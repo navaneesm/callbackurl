@@ -19,7 +19,7 @@ app.post('/', function(req, res){
 	var handler = req.body.handler;
 	var componentName = req.body.name;
 	var response = {};
-	if(handler == 1000)		//Command execution handler reponse
+	if(handler == "execution_handler")		//Command execution handler reponse
 	{
 		console.log("inside command execution handler");
 		var output = {};
