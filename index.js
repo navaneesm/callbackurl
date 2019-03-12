@@ -194,13 +194,13 @@ app.post('/', function(req, res){
 		output = {"text" : req.body.name + " Message action performed"};
 	}
 
-	else if(type == "installation_handler")	//Installation handler
+	else if(handler == "installation_handler")	//Installation handler
 	{
 		console.log("inside installation handler");
 		output = {"status" : "200","note":["1. Use the bot to resolve issues quicker.","2. Use the slash commands and message actions to keep track for activities"],"message":"We're glad you chose this extension!","title":"Success!","footer":"Contact support@yourdomain.com for any related help / support."};
 	}
 
-	else if(type == "installation_validator")	//Installation validator
+	else if(handler == "installation_validator")	//Installation validator
 	{
 		console.log("inside intallation validator");
 		output = {"status" : "200"};
