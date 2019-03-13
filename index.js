@@ -197,7 +197,7 @@ app.post('/', function(req, res){
 	else if(handler == "installation_handler")	//Installation handler
 	{
 		console.log("inside installation handler");
-		output = {"status" : "200","note":["1. Use the bot to resolve issues quicker.","2. Use the slash commands and message actions to keep track for activities"],"message":"We're glad you chose this extension!","title":"Success!","footer":"Contact support@yourdomain.com for any related help / support."};
+		output = {"status" : "200","note":["1. for testing.","2. for testing"],"message":"for testing","title":"Success!","footer":"Contact support@zoho.com for any related help / support."};
 	}
 
 	else if(handler == "installation_validator")	//Installation validator
