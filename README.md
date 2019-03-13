@@ -5,6 +5,7 @@ For testing cliq call back execution by hosting a server in heroku
 1. Node
 2. npm
 3. git
+4. heroku (To download - https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 
 # To check the installations of each software, enter the commands 
 1. "node --version"     ( Should return the version )
