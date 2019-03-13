@@ -2,9 +2,9 @@
 For testing cliq call back execution by hosting a server in heroku
 
 # Pre required softwares in machine 
-1. Node
-2. npm
-3. git
+1. Node (To download - https://nodejs.org/en/download/)
+2. npm	
+3. git ( To dowload - https://git-scm.com/download/win)
 4. heroku (To download - https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
 
 # To check the installations of each software, enter the commands 
