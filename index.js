@@ -26,19 +26,19 @@ app.post('/', function(req, res){
 		{
 			console.log("inside command execution handler");
 			var output = {};
-			if(componentName == "normalCommand")	//required consents  -- user
+			if(componentName == "normalcommand")	//required consents  -- user
 			{
 				output = {"text":"Hi " + req.body.params.user.first_name + " ! Slash commands are short cuts to perform tasks. Commands can also provide suggestions, just configure the command suggestion handler! :smile:"};
 			}
-			else if(componentName == "suggestionCommand")	//required consents  -- 
+			else if(componentName == "suggestioncommand")	//required consents  -- 
 			{
 				output = {"text":"Hi you have selected " + req.body.params.selections.length + " suggestions and first title is " + req.body.params.selections[0].title};	
 			}
-			else if(componentName == "invokeFunctionCmd")	//required consents  -- 	//reqired a function named "function"
+			else if(componentName == "invokefunctioncmd")	//required consents  -- 	//reqired a function named "function"
 			{
 				output = {"version":1,"inputs":[{"label":"Name","name":"username","type":"text","value":"Scott Fisher","mandatory":true,"placeholder":"Scott Fisher","hint":"Please enter your name"},{"label":"Email","name":"email","type":"text","value":"scott.fisher@zylker.com","mandatory":true,"format":"email","placeholder":"scott.fisher@zylker.com","hint":"Enter your email address"},{"label":"Asset Type","name":"asset-type","options":[{"label":"Laptop","value":"laptop"},{"label":"Mobile","value":"mobile"}],"type":"select","trigger_on_change":true,"mandatory":true,"placeholder":"Mobile","hint":"Choose your request asset type."}],"name":"ID","type":"form","button_label":"Raise Request","actions":{"submit":{"name":"function","type":"invoke.function"}},"title":"Asset Request","hint":"Raise your asset request."};
 			}
-			else if(componentName == "invokeBtn")	//required consents  --  		//invoke's button function
+			else if(componentName == "invokebtn")	//required consents  --  		//invoke's button function
 			{
 				//output = {"text":"[What's this?](invoke.function|dreButtonFunction)"};
 				output = {"buttons":[{"label":"Create Webhook","type":"+","action":{"confirm":{"description":"Connect to GitLab Projects from within Cliq","title":"Generate Webhooks for a GitLab Project"},"type":"invoke.function","data":{"name":"authentication"}}}],"text":"Click on the token generation button below!"};
