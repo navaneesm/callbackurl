@@ -191,7 +191,7 @@ app.post('/', function(req, res){
 	else if(type == "messageaction")	//Message action
 	{
 		console.log("inside message action handler");
-		output = {"text" : req.body.name + " Message action performed on " +  req.body.params.message.type};
+		output = {"text" : " Message action performed"};
 	}
 
 	else if(handler == "installation_handler")	//Installation handler
