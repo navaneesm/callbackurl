@@ -43,6 +43,10 @@ app.post('/', function(req, res){
 				//output = {"text":"[What's this?](invoke.function|dreButtonFunction)"};
 				output = {"buttons":[{"label":"Create Webhook","type":"+","action":{"confirm":{"description":"Connect to GitLab Projects from within Cliq","title":"Generate Webhooks for a GitLab Project"},"type":"invoke.function","data":{"name":"authentication"}}}],"text":"Click on the token generation button below!"};
 			}
+			else if(componentName == "attachFunCmd")
+			{
+				output = {"type":"form","title":"Upload a file","name":"ID","version":1,"button_label":"Upload","actions":{"submit":{"type":"invoke.function","name":"attachForm"}},"inputs":[{"type":"file","name":"file","label":"File to share","hint":"File will be posted in the same chat","placeholder":"","mandatory":true,"multiple":"true"}]};
+			}
 		}
 		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  -- 
 		{
