@@ -49,7 +49,7 @@ app.post('/', function(req, res){
 			}
 			else if(componentName == "banner")
 			{
-				output = {"text":"Testing banner through URL invoke extension","status":"Success","type":"banner"};
+				output = {"text":"Testing banner through URL invoke extension","status":"success","type":"banner"};
 			}
 		}
 		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  -- 
