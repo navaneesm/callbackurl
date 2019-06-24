@@ -26,7 +26,7 @@ app.post('/', function(req, res){
 		{
 			console.log("inside command execution handler");
 			var output = {};
-			if(componentName == "normalcommand")	//required consents  -- user
+			if(componentName == "command")	//required consents  -- user
 			{
 				output = {"text":"Hi " + req.body.params.user.first_name + " ! Slash commands are short cuts to perform tasks. Commands can also provide suggestions, just configure the command suggestion handler! :smile:"};
 			}
