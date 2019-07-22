@@ -31,7 +31,7 @@ app.post('/', function(req, res){
 'apo5Po/aaht7Td8D03+I6qBjZP4/BxE0NMuYG5fj23YCJydKte8'+
 'DCelstpy1aYirnP6yK8/rWD8qxmblD75gBDu+GQCWRDzNirxbJ0'+
 'DublRxv7OrQEj0M246xNHnXk1/l6ldcrcRvJBDorkGJGQY9y9h+'+
-'wLo0NqASnocD2isH6IVHzeLq4C2JwIDAQAB'+
+'wLo0NqASnocD2isH6IVHzeLq4C2JwIDAQAB\n'+
 '-----END PUBLIC KEY-----';
 
 	var verifier = crypto.createVerify('sha256');
