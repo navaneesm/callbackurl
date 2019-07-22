@@ -16,6 +16,11 @@ app.post('/', function(req, res){
 	{
 		console.log(param);
 	}
+	
+	var signature = req.body.signature;
+	var data = remove req.body.signature;
+	console.log("Without signature " + JSON.stringify(data));
+	
 	var type = req.body.type;
 	var handler = req.body.handler;
 	var componentName = req.body.name;
