@@ -11,11 +11,11 @@ app.use(bodyParser.urlencoded({
 
 //Handle POST request
 app.post('/', function(req, res){
-	console.log("Request body" + JSON.stringify(req.body));
-	console.log("Given params :- ");
+	//console.log("Request body" + JSON.stringify(req.body));
+	//console.log("Given params :- ");
 	for(param in req.body.params)
 	{
-		console.log(param);
+		//console.log(param);
 	}
 	
 	//Verifying signature
@@ -36,6 +36,8 @@ app.post('/', function(req, res){
 	'-----END PUBLIC KEY-----';
 
 	var verifier = crypto.createVerify('sha256');
+	console.log("Body to be verified : " + JSON.stringify(body));
+	console.log("Signature to be verified : " + JSON.stringify(signature));
 	verifier.update(JSON.stringify(body));
 	var result = verifier.verify(publicKey, signature, 'base64');
 	console.log(result);
