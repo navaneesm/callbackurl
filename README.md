@@ -32,14 +32,15 @@ which has default node.js code.
 1. Enter the command "heroku logs --tail" or you can login to heroku in the browser and select the respective server and check the logs.
 
 # The payload in body sent on component execution in cliq 
-{
-  type : command | bot,
-	handler : welcome_handler | execution_handler,
-  name : $component name ,
-	unique_name : $unique name (if available),
-  handler_name : help ( applicable for action handlers of bots alone),
-  params : { developer enabled params (user | message | location | chat | internal_attachments) }
-}
+{<br/>
+&nbsp;signature : signature of the body with RSA,<br/>
+&nbsp;name : $component name ,<br/>
+&nbsp;handler : welcome_handler | execution_handler,<br/>
+&nbsp;type : command | bot,<br/>
+&nbsp;unique_name : $unique name (for bots alone),<br/>
+&nbsp;handler_name : help (applicable for action handlers of bots alone),<br/>
+&nbsp;params : { developer enabled params (user | message | location | chat | internal_attachments) }<br/>
+}<br/>
 
 # Respose structure 
 {
