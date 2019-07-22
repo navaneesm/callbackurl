@@ -38,7 +38,7 @@ app.post('/', function(req, res){
 	var verifier = crypto.createVerify('sha256');
 	verifier.update(JSON.stringify(body));
 	var result = verifier.verify(publicKey, signature, 'base64');
-	cosole.log(result);
+	console.log(result);
 	
 	var type = req.body.type;
 	var handler = req.body.handler;
