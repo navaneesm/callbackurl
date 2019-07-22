@@ -32,7 +32,7 @@ app.post('/', function(req, res){
 	'qBjZP4/BxE0NMuYG5fj23YCJydKte8DCelstpy1aYirnP'+
 	'6yK8/rWD8qxmblD75gBDu+GQCWRDzNirxbJ0DublRxv7Or'+
 	'QEj0M246xNHnXk1/l6ldcrcRvJBDorkGJGQY9y9h+wLo0N'+
-	'qASnocD2isH6IVHzeLq4C2JwIDAQAB/n'+
+	'qASnocD2isH6IVHzeLq4C2JwIDAQAB\n'+
 	'-----END PUBLIC KEY-----';
 
 	var verifier = crypto.createVerify('sha256');
