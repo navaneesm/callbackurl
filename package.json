@@ -1,13 +1,13 @@
 {
   "name": "urltest",
   "version": "1.0.0",
-  "description": "For testing ngrok",
+  "description": "For testing URL invoke execution type extensions",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "node test.js"
   },
-  "author": "navaneethakrishnan.sm,",
+  "author": "navaneethakrishnan.sm",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
