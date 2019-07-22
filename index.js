@@ -36,7 +36,7 @@ app.post('/', function(req, res){
 	'-----END PUBLIC KEY-----';
 
 	var verifier = crypto.createVerify('sha256');
-	verifier.update(body);
+	verifier.update(JSON.stringify(body));
 	var result = verifier.verify(publicKey, signature, 'base64');
 	cosole.log(result);
 	
