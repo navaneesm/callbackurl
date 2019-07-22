@@ -18,7 +18,7 @@ app.post('/', function(req, res){
 	}
 	
 	var signature = req.body.signature;
-	var data = remove req.body.signature;
+	var data = delete req.body.signature;
 	console.log("Without signature " + JSON.stringify(data));
 	
 	var type = req.body.type;
