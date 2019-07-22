@@ -11,11 +11,11 @@ app.use(bodyParser.urlencoded({
 
 //Handle POST request
 app.post('/', function(req, res){
-	//console.log("Request body" + JSON.stringify(req.body));
-	//console.log("Given params :- ");
+	console.log("\n<!------- ******** Request body ******** -------!>\n" + JSON.stringify(req.body));
+	console.log("\n<!------- ******** Given params ******** -------!>\n");
 	for(param in req.body.params)
 	{
-		//console.log(param);
+		console.log(param);
 	}
 	
 	//Verifying signature
@@ -24,22 +24,20 @@ app.post('/', function(req, res){
 	delete body.signature;
 	
 	var publicKey = '-----BEGIN PUBLIC KEY-----\n'+
-'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtS'+
-'Lt3fihOK2wH4c/JodcuyKmiXaOi9Oco0LiZOmNPSHaYk4NX'+
-'8wFO946ULAS0+OiC44Frnr0vS3QBcqR/PzrfOHcrZ2n09jw'+
-'5Bu7KfwRJTU0v3+jFHw23yBM2ppqAsjwGEkURMOb/R8tmKo'+
-'KEcFg+7qgMELvG7jL9xQcIoPZB+AmdAXgVGTq8ix'+
-'HdkwpSVT10d3k4czeBTpTQeXXSN2zoTPbfaFqBrtAjdf'+
-'dh0dVP8GpRPC1KjB7q3OfRW917E+X7XPwkfCEn67dIUhb'+
-'2BH1wQV5hdSzCG3enii+wLvyLOda/ySzREAR5QwjJFgnfN5R'+
-'sLt7gYSGlciEW95ZWnss6QIDAQAB\n'+
-'-----END PUBLIC KEY-----';
+	'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtS'+
+	'Lt3fihOK2wH4c/JodcuyKmiXaOi9Oco0LiZOmNPSHaYk4NX'+
+	'8wFO946ULAS0+OiC44Frnr0vS3QBcqR/PzrfOHcrZ2n09jw'+
+	'5Bu7KfwRJTU0v3+jFHw23yBM2ppqAsjwGEkURMOb/R8tmKo'+
+	'KEcFg+7qgMELvG7jL9xQcIoPZB+AmdAXgVGTq8ix'+
+	'HdkwpSVT10d3k4czeBTpTQeXXSN2zoTPbfaFqBrtAjdf'+
+	'dh0dVP8GpRPC1KjB7q3OfRW917E+X7XPwkfCEn67dIUhb'+
+	'2BH1wQV5hdSzCG3enii+wLvyLOda/ySzREAR5QwjJFgnfN5R'+
+	'sLt7gYSGlciEW95ZWnss6QIDAQAB\n'+
+	'-----END PUBLIC KEY-----';
 	var verifier = crypto.createVerify('sha256');
-	console.log("Body to be verified : " + JSON.stringify(body));
-	console.log("Signature to be verified : " + JSON.stringify(signature));
 	verifier.update(JSON.stringify(body));
 	var result = verifier.verify(publicKey, signature, 'base64');
-	console.log(result);
+	console.log("\n<!------- ******** Is valid signature ******** -------!>\n" + result);
 	
 	var type = req.body.type;
 	var handler = req.body.handler;
@@ -49,7 +47,7 @@ app.post('/', function(req, res){
 	{
 		if(handler == "execution_handler")		//Command execution handler reponse
 		{
-			console.log("inside command execution handler");
+			console.log("\n<!------- ******** Inside command execution handler ******** -------!>\n");
 			var output = {};
 			if(componentName == "command")	//required consents  -- user
 			{
@@ -79,7 +77,7 @@ app.post('/', function(req, res){
 		}
 		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  -- 
 		{
-			console.log("inside command suggestion handler");
+			console.log("\n<!------- ******** Inside command suggestion handler ******** -------!>\n");
 			output = [{"description":"Command suggestions are helpful when you have to choose from a list of entities!","imageurl":"https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif","title":"Tip 1 👋"},{"description":"You can show upto a maximum of 50 command suggestions. :surprise:","imageurl":"https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif","title":"Tip 2 😲"}];
 		}
 	}
@@ -92,7 +90,7 @@ app.post('/', function(req, res){
 		}
 		else if(handler == "form_handler")	//Form submit handler response
 		{
-			console.log("inside form submit handler");
+			console.log("\n<!------- ******** Inside form submit handler ******** -------!>\n");
 			form = req.body.params.form;
 			formValues = form.values;
 			if(formValues["asset-type"].value == "mobile")
@@ -106,11 +104,11 @@ app.post('/', function(req, res){
 		}
 		else if(handler == "form_change_handler")	//Form change handler response
 		{
-			console.log("inside form change handler");
+			console.log("\n<!------- ******** Inside form change handler ******** -------!>\n");
 			var targetName = req.body.params.target.name;
 			var inputValues = req.body.params.form.values;
-			console.log("form values " + JSON.stringify(targetName));
-			console.log("form target values " + JSON.stringify(inputValues));
+			console.log("\n<!------- ******** Form values ******** -------!>\n" + JSON.stringify(targetName));
+			console.log("\n<!------- ******** Form target values ******** -------!>\n" + JSON.stringify(inputValues));
 			var actions = [];
 			if(targetName  == "asset-type")
 			{
@@ -143,7 +141,7 @@ app.post('/', function(req, res){
 		}
 		else if(handler == "form_values_handler")	//Form dynamic input handler response
 		{
-			console.log("inside dynamic input handler");
+			console.log("\n<!------- ******** Inside dynamic input handler ******** -------!>\n");
 			var target = req.body.params.target;
 			var form = req.body.params.form;
 			var searchValue = target.query;
@@ -159,7 +157,6 @@ app.post('/', function(req, res){
 					androidDevicesList.forEach(function(androidDevice) {
 				        if(androidDevice.includes(searchValue))
 				        {
-					        console.log(androidDevice);
 				        	typeList.push({"label":androidDevice,"value":androidDevice.replace(/\s+/g,"_")});
 				        }
 				    });
@@ -169,13 +166,11 @@ app.post('/', function(req, res){
 					iOSDevicesList.forEach(function(iOSDevice) {
 				        if(iOSDevice.includes(searchValue))
 				        {
-						console.log(iOSDevice);
 				        	typeList.push({"label":iOSDevice,"value":iOSDevice.replace(/\s+/g,"_")});
 				        }
 				    });
 				}
 			}
-			console.log("Dynamic type list  " + typeList);
 			output = {"options" : typeList};
 		}
 	}
@@ -184,12 +179,12 @@ app.post('/', function(req, res){
 	{
 		if(handler == "welcome_handler")	//Bot welcome handler
 		{
-			console.log("inside bot welcome handler");
+			console.log("\n<!------- ******** Inside bot welcome handler ******** -------!>\n");
 			output = {"text" : req.body.name + " bot welcomes you!"};
 		}
 		else if(handler == "message_handler")	//Bot message handler. 		//required consents  --  message
 		{
-			console.log("inside bot message handler");
+			console.log("\n<!------- ******** Inside bot message handler ******** -------!>\n");
 			var message = req.body.params.message;
 			if(message == "context")
 			{
@@ -202,12 +197,12 @@ app.post('/', function(req, res){
 		}
 		else if(handler == "mention_handler")	//Bot mention handler
 		{
-			console.log("inside bot mention handler");
+			console.log("\n<!------- ******** Inside bot mention handler ******** -------!>\n");
 			output = {"text" : "You mentioned me!"};
 		}
 		else if(handler == "context_handler")	//Bot context
 		{
-			console.log("inside bot context handler");
+			console.log("\n<!------- ******** Inside bot context handler ******** -------!>\n");
 			var answers = req.body.params.answers;
 			var msgString = "Name : " + answers.name.text + "\n";
 			msgString = msgString + "Age : " + answers.age.text + "\n";
@@ -216,31 +211,31 @@ app.post('/', function(req, res){
 		}
 		else if(handler == "action_handler")	//Bot actions
 		{
-			console.log("inside bot action handler");
+			console.log("\n<!------- ******** Inside bot action handler ******** -------!>\n");
 			output = {"text" : req.body.handler_name + " bot action performed"};
 		}
 	}
 
 	else if(type == "messageaction")	//Message action
 	{
-		console.log("inside message action handler");
+		console.log("\n<!------- ******** Inside message action handler ******** -------!>\n");
 		output = {"text" : " Message action performed"};
 	}
 
 	else if(handler == "installation_handler")	//Installation handler
 	{
-		console.log("inside installation handler");
+		console.log("\n<!------- ******** Inside installation handler ******** -------!>\n");
 		output = {"status" : "200","note":["1. for testing.","2. for testing"],"message":"for testing","title":"Success!","footer":"Contact support@zoho.com for any related help / support."};
 	}
 
 	else if(handler == "installation_validator")	//Installation validator
 	{
-		console.log("inside intallation validator");
+		console.log("\n<!------- ******** Inside intallation validator ******** -------!>\n");
 		output = {"status" : "200"};
 	}
 
 	response.output = output;
-	console.log("Execution response " + JSON.stringify(response));
+	console.log("\n<!------- ******** Execution response ******** -------!>\n" + JSON.stringify(response));
   	res.send(response);
 });
 
