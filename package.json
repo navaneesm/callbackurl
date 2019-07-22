@@ -9,6 +9,19 @@
   },
   "author": "",
   "license": "ISC",
+   "keywords": [
+    "node",
+    "rsa",
+    "crypto",
+    "assymetric",
+    "encryption",
+    "decryption",
+    "sign",
+    "verify",
+    "pkcs1",
+    "oaep",
+    "pss"
+  ],
   "dependencies": {
     "ejs": "^2.5.6",
     "express": "^4.15.2",
