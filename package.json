@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "node test.js"
   },
-  "author": "",
+  "author": "navaneethakrishnan.sm,",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
