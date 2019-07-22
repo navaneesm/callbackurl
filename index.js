@@ -1,4 +1,5 @@
 var express = require('express');
+const NodeRSA = require('node-rsa');
 var app = express();
 var bodyParser = require('body-parser');
 
@@ -17,9 +18,19 @@ app.post('/', function(req, res){
 		console.log(param);
 	}
 	
-	var signature = req.body.signature;
-	var data = delete req.body.signature;
-	console.log("Without signature " + JSON.stringify(data));
+	//Verifying signature
+	var body = req.body;
+	var signature = body.signature;
+	delete body.signature;
+	
+	const decryptionKey = new NodeRSA("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApfi+KX3NbMhM8Xwb6eVlOi+GGdYdVr1TqeE+3ivxhdgPWtFkfwOky4cyeakJI7a0B1eW+PFl9XJXb6R6HdK8OkB2fU1fqxSg6GhruQi0feKIaisU1h8fPkPAap4E/tSt51PuXnWERsQAQ3DHgHaiDay7bfrDBJ5sapo5Po/aaht7Td8D03+I6qBjZP4/BxE0NMuYG5fj23YCJydKte8DCelstpy1aYirnP6yK8/rWD8qxmblD75gBDu+GQCWRDzNirxbJ0DublRxv7OrQEj0M246xNHnXk1/l6ldcrcRvJBDorkGJGQY9y9h+wLo0NqASnocD2isH6IVHzeLq4C2JwIDAQAB");
+	decryptionKey.setOptions({signingScheme: 'pss-sha1'});
+	const signature = Buffer.from(signature, 'base64');
+	const text = Buffer.from(body, 'base64');
+	let result = decryptionKey.verify(text, signature);
+	cosole.log(result);
+	
+	console.log("Without signature " + JSON.stringify(body));
 	
 	var type = req.body.type;
 	var handler = req.body.handler;
