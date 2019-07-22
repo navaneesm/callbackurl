@@ -33,7 +33,7 @@ which has default node.js code.
 
 # The payload in body sent on component execution in cliq 
 {
-  type : command | bot,\n
+  type : command | bot,
 	handler : welcome_handler | execution_handler,
   name : $component name ,
 	unique_name : $unique name (if available),
