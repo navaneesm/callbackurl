@@ -11,33 +11,40 @@ app.use(bodyParser.urlencoded({
 
 //Handle POST request
 app.post('/', function(req, res){
-	console.log("\n<!------- ******** Request body ******** -------!>\n" + JSON.stringify(req.body));
-	console.log("\n<!------- ******** Given params ******** -------!>\n");
+
+	console.log("\n<!------- ******** Request Body ******** -------!>\n" + JSON.stringify(req.body) + "\n<!------- ******** End of Request Body ******** -------!>\n");
+	console.log("\n<!------- ******** Given Params ******** -------!>\n");
 	for(param in req.body.params)
 	{
 		console.log(param);
 	}
-	
+	console.log("\n<!------- ******** End of Given Params ******** -------!>\n");
+
 	//Verifying signature
 	var body = req.body;
 	var signature = body.signature;
 	delete body.signature;
-	
 	var publicKey = '-----BEGIN PUBLIC KEY-----\n'+
-	'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtS'+
-	'Lt3fihOK2wH4c/JodcuyKmiXaOi9Oco0LiZOmNPSHaYk4NX'+
-	'8wFO946ULAS0+OiC44Frnr0vS3QBcqR/PzrfOHcrZ2n09jw'+
-	'5Bu7KfwRJTU0v3+jFHw23yBM2ppqAsjwGEkURMOb/R8tmKo'+
-	'KEcFg+7qgMELvG7jL9xQcIoPZB+AmdAXgVGTq8ix'+
-	'HdkwpSVT10d3k4czeBTpTQeXXSN2zoTPbfaFqBrtAjdf'+
-	'dh0dVP8GpRPC1KjB7q3OfRW917E+X7XPwkfCEn67dIUhb'+
-	'2BH1wQV5hdSzCG3enii+wLvyLOda/ySzREAR5QwjJFgnfN5R'+
-	'sLt7gYSGlciEW95ZWnss6QIDAQAB\n'+
-	'-----END PUBLIC KEY-----';
+					'MIIBIjANBgkqhkiG9w0BAQEFAAOC'+
+					'AQ8AMIIBCgKCAQEAtSLt3fihOK2w'+
+					'H4c/JodcuyKmiXaOi9Oco0LiZOmN'+
+					'PSHaYk4NX8wFO946ULAS0+OiC44F'+
+					'rnr0vS3QBcqR/PzrfOHcrZ2n09jw'+
+					'5Bu7KfwRJTU0v3+jFHw23yBM2ppq'+
+					'AsjwGEkURMOb/R8tmKoKEcFg+7qg'+
+					'MELvG7jL9xQcIoPZB+AmdAXgVGTq'+
+					'8ixHdkwpSVT10d3k4czeBTpTQeXX'+
+					'SN2zoTPbfaFqBrtAjdfdh0dVP8Gp'+
+					'RPC1KjB7q3OfRW917E+X7XPwkfCE'+
+					'n67dIUhb2BH1wQV5hdSzCG3enii+'+
+					'wLvyLOda/ySzREAR5QwjJFgnfN5R'+
+					'sLt7gYSGlciEW95ZWnss6QIDAQAB'+
+					'\n-----END PUBLIC KEY-----';
+
 	var verifier = crypto.createVerify('sha256');
 	verifier.update(JSON.stringify(body));
 	var result = verifier.verify(publicKey, signature, 'base64');
-	console.log("\n<!------- ******** Is valid signature ******** -------!>\n" + result);
+	console.log("\n<!------- ******** Is valid signature # " + result + " # ******** -------!>\n");
 	
 	var type = req.body.type;
 	var handler = req.body.handler;
@@ -47,7 +54,7 @@ app.post('/', function(req, res){
 	{
 		if(handler == "execution_handler")		//Command execution handler reponse
 		{
-			console.log("\n<!------- ******** Inside command execution handler ******** -------!>\n");
+			console.log("\n<!------- ******** Inside command execution handler ******** -------!>");
 			var output = {};
 			if(componentName == "command")	//required consents  -- user
 			{
@@ -235,7 +242,7 @@ app.post('/', function(req, res){
 	}
 
 	response.output = output;
-	console.log("\n<!------- ******** Execution response ******** -------!>\n" + JSON.stringify(response));
+	console.log("\n<!------- ******** Execution Response ******** -------!>\n" + JSON.stringify(response) + "\n<!------- ******** End of Execution Response ******** -------!>\n");
   	res.send(response);
 });
 
