@@ -25,22 +25,21 @@ app.post('/', function(req, res){
 	var signature = body.signature;
 	delete body.signature;
 	var publicKey = '-----BEGIN PUBLIC KEY-----\n'+
-					'MIIBIjANBgkqhkiG9w0BAQEFAAOC'+
-					'AQ8AMIIBCgKCAQEAtSLt3fihOK2w'+
-					'H4c/JodcuyKmiXaOi9Oco0LiZOmN'+
-					'PSHaYk4NX8wFO946ULAS0+OiC44F'+
-					'rnr0vS3QBcqR/PzrfOHcrZ2n09jw'+
-					'5Bu7KfwRJTU0v3+jFHw23yBM2ppq'+
-					'AsjwGEkURMOb/R8tmKoKEcFg+7qg'+
-					'MELvG7jL9xQcIoPZB+AmdAXgVGTq'+
-					'8ixHdkwpSVT10d3k4czeBTpTQeXX'+
-					'SN2zoTPbfaFqBrtAjdfdh0dVP8Gp'+
-					'RPC1KjB7q3OfRW917E+X7XPwkfCE'+
-					'n67dIUhb2BH1wQV5hdSzCG3enii+'+
-					'wLvyLOda/ySzREAR5QwjJFgnfN5R'+
-					'sLt7gYSGlciEW95ZWnss6QIDAQAB'+
-					'\n-----END PUBLIC KEY-----';
-
+			'MIIBIjANBgkqhkiG9w0BAQEFAAOC'+
+			'AQ8AMIIBCgKCAQEAiCqa34X5rYyK'+
+			'Y0lH1kAzVhvgvG7XO9f010daZGP3'+
+			'CNijVwKxqi8A8Doa2UWr8CHcy1MM'+
+			'5gmJqisdnK8auL2P4ELbaWaxM/Pi'+
+			'bEzNTGiGgtH4ooZahLA6fV8rRRTY'+
+			'GAVHU4ij3eoOzpBIwIQtYBz46kbD'+
+			'SmKqvYidV2YuR7WUYvlzllCPdseQ'+
+			'XK3WVUXFf5WihVhZPenkfe9oyEjB'+
+			'LSJHj95/FrJL24DAmW/ng3q3cKpx'+
+			'mhgfiCeYN5AGSZwRfWhgmACw175S'+
+			'hiMoOefV1oHfbznktB4jJ4xwN39P'+
+			'9raO43WVFKF2HQF+dzJIVSlzx0r+'+
+			'M7DCe47/s17L5Zh6VVwMnQIDAQAB'+
+			'\n-----END PUBLIC KEY-----';
 	var verifier = crypto.createVerify('sha256');
 	verifier.update(JSON.stringify(body));
 	var result = verifier.verify(publicKey, signature, 'base64');
