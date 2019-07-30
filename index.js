@@ -41,8 +41,11 @@ app.post('/', function(req, res){
 			'\n-----END PUBLIC KEY-----';
 	var verifier = crypto.createVerify('sha256');
 	verifier.update(JSON.stringify(body));
-	var result = verifier.verify(publicKey, signature, 'base64');
-	console.log("\n<!------- ******** Is valid signature # " + result + " # ******** -------!>");
+	if(typeof signature !== "undefined")
+	{
+		var result = verifier.verify(publicKey, signature, 'base64');
+		console.log("\n<!------- ******** Is valid signature # " + result + " # ******** -------!>");
+	}
 	
 	var type = req.body.type;
 	var handler = req.body.handler;
