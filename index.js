@@ -224,7 +224,8 @@ app.post('/', function(req, res){
 	else if(type == "messageaction")	//Message action
 	{
 		console.log("\n<!------- ******** Inside message action handler ******** -------!>");
-		output = {"text" : " Message action performed"};
+		output = {"type":"form","title":"Asset Request","hint":"Raise your asset request.","name":"ID","version":1,"button_label":"Raise Request","actions":{"submit":{"type":"invoke.function","name":"form"}},"inputs":[{"type":"text","name":"username","label":"Name","hint":"Please enter your name","placeholder":"Scott Fisher","mandatory":true,"value":"Scott Fisher"}]};
+		//output = {"text" : " Message action performed"};
 	}
 
 	else if(handler == "installation_handler")	//Installation handler
