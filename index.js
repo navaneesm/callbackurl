@@ -47,7 +47,7 @@ app.post('/', function(req, res){
 	}
 	
 	var type = req.body.type;
-	var handler = req.body.handler;
+	var handler = req.body.handler.type;
 	var componentName = req.body.name;
 	var response = {};
 	if(type == "command")	//Command handlers
@@ -80,6 +80,10 @@ app.post('/', function(req, res){
 			else if(componentName == "banner")
 			{
 				output = {"text":"Testing banner through URL invoke extension","status":"success","type":"banner"};
+			}
+			else
+			{
+				output = {"text":"Hi, " + componentName + " is the command name"};
 			}
 		}
 		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  -- 
