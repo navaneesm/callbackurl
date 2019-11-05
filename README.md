@@ -44,6 +44,57 @@ which has default node.js code.
 
 # Sample Request
 {<br/>
+   "name": "dog",<br/>
+   "handler": {<br/>
+      "type": "execution_handler",<br/>
+   },<br/>
+   "response_url": "https://cliq.zoho.com/v2/extensions/2305843009213696874/responses/17202823903115726112805040",<br/>
+   "type": "command",<br/>
+   "timestamp": 1572611280504,<br/>
+   "params": {<br/>
+      "arguments": "",<br/>
+      "selections": [],<br/>
+      "mentions": [],<br/>
+      "access": {<br/>
+         "user_id": "631830849",<br/>
+         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36",<br/>
+         "chat_id": "CT_2230748078536646675_631836344-B1"<br/>
+      },<br/>
+      "attachments": [],<br/>
+      "user": {<br/>
+         "id": "631830849",<br/>
+         "country": "us",<br/>
+         "language": "en",<br/>
+         "organization_id": "631836344",<br/>
+         "timezone": "Asia/Kolkata",<br/>
+         "first_name": "Scott",<br/>
+         "email": "scott.fisher@zylker.com",<br/>
+         "admin": true,<br/>
+         "last_name": "Fisher"<br/>
+      },<br/>
+      "environment": {<br/>
+         "data_center": "US"<br/>
+      },<br/>
+      "location": {},<br/>
+      "options": {},<br/>
+      "chat": {<br/>
+         "owner": "631830849",<br/>
+         "members": [<br/>
+            {<br/>
+               "status": "1",<br/>
+               "last_name": "Fisher",<br/>
+               "email": "scott.fisher@zylker.com",<br/>
+               "first_name": "Scott",<br/>
+               "id": "631830849"<br/>
+            }<br/>
+         ],<br/>
+         "type": "bot",<br/>
+         "title": "Taz",<br/>
+         "id": "CT_2230748078536646675_631836344-B1"<br/>
+      }<br/>
+   }<br/>
+}<br/>
+{<br/>
 	&nbsp;"signature":"m+cGF3dj8uJBqK5fRo7XuPswxvdOJ97FALQeHuFkPQrDORMm3h6byxctgbbmz1CCmibEMTthCwEf2l4x+KDMg+VmdvXIRmmYefFSRhWG3p374bIIIxDNQKsVVRh8T2j/IPacnRJtJZsBI4SjvvI0Ij9IPAEDlNG6Z+grMe0oqxcH+SoIeYp7bvfivyQTUTwbe6W5LP8ms9dIDnUvutlsCrveDh66+vcM26kL6/u/MMx0/U+OyCg5SbQddm21r3IgDug89or9x5LphV58KB2HmTnKe+5AQnCoP+N2pwsmGDZyR/WJmOPSfm6Lc9fO8OnFMTSD6D5riSbhzjlfQ6RH7A==",<br/>
 	&nbsp;"name":"demo",<br/>
 	&nbsp;"handler":"execution_handler",<br/>
