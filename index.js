@@ -26,17 +26,17 @@ app.post('/', function(req, res){
 	delete body.signature;
 	var publicKey = '-----BEGIN PUBLIC KEY-----\n'+
 			'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AM'+
-'IIBCgKCAQEApLufF81FW87VuSwYRqZNEE'+
-'XGoVyKx3TBvNbtAU0d5/P9Dwo/aStTsBt'+
-'NxOhSOIyOI6ZJpogWaZh19iDYvcYyk1Oi'+
-'GGM4Pl8UR0aCV4m5VJsGCkrWXSqtWFLuF'+
-'G0v4iI+ASjeew8SDtk6+/2viiVpLLHUUl'+
-'mfj1f+C7yFhiZQ0ubfG1dGMRBeuAH12tV'+
-'hqGtnZJxMPWSO6O03qivmkPfoU65GcMAY'+
-'p5uQCjYgtcxzLWYZsBUp3FEj6w4yygLjq'+
-'LTE55hf4NbdjO6W3WI91Dfi1eEzTgfEkg'+
-'TrcyF405FjPxhfM3mZyVQSMaGjaR3SdA2'+
-'L0KsjGL3BWO0pc2ICggF3lQIDAQAB'+
+			'IIBCgKCAQEApLufF81FW87VuSwYRqZNEE'+
+			'XGoVyKx3TBvNbtAU0d5/P9Dwo/aStTsBt'+
+			'NxOhSOIyOI6ZJpogWaZh19iDYvcYyk1Oi'+
+			'GGM4Pl8UR0aCV4m5VJsGCkrWXSqtWFLuF'+
+			'G0v4iI+ASjeew8SDtk6+/2viiVpLLHUUl'+
+			'mfj1f+C7yFhiZQ0ubfG1dGMRBeuAH12tV'+
+			'hqGtnZJxMPWSO6O03qivmkPfoU65GcMAY'+
+			'p5uQCjYgtcxzLWYZsBUp3FEj6w4yygLjq'+
+			'LTE55hf4NbdjO6W3WI91Dfi1eEzTgfEkg'+
+			'TrcyF405FjPxhfM3mZyVQSMaGjaR3SdA2'+
+			'L0KsjGL3BWO0pc2ICggF3lQIDAQAB'+
 			'\n-----END PUBLIC KEY-----';
 	var verifier = crypto.createVerify('sha256');
 	verifier.update(JSON.stringify(body));
@@ -83,7 +83,7 @@ app.post('/', function(req, res){
 			}
 			else
 			{
-				output = {"text":"Hi, " + componentName + " is the command name"};
+				output = {"text":"hai","type":"banner"};
 			}
 		}
 		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  -- 
