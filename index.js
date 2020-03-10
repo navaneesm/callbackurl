@@ -47,7 +47,9 @@ app.post('/', function(req, res){
 	}
 	
 	var type = req.body.type;
+	console.log("\n<!------- ******** type # " + type + " # ******** -------!>");
 	var handler = req.body.handler.type;
+	console.log("\n<!------- ******** handler # " + handler + " # ******** -------!>");
 	var componentName = req.body.name;
 	var response = {};
 	if(type == "command")	//Command handlers
