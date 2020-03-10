@@ -26,17 +26,17 @@ app.post('/', function(req, res){
 	delete body.signature;
 	var publicKey = '-----BEGIN PUBLIC KEY-----\n'+
 			'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AM'+
-			'IIBCgKCAQEApLufF81FW87VuSwYRqZNEE'+
-			'XGoVyKx3TBvNbtAU0d5/P9Dwo/aStTsBt'+
-			'NxOhSOIyOI6ZJpogWaZh19iDYvcYyk1Oi'+
-			'GGM4Pl8UR0aCV4m5VJsGCkrWXSqtWFLuF'+
-			'G0v4iI+ASjeew8SDtk6+/2viiVpLLHUUl'+
-			'mfj1f+C7yFhiZQ0ubfG1dGMRBeuAH12tV'+
-			'hqGtnZJxMPWSO6O03qivmkPfoU65GcMAY'+
-			'p5uQCjYgtcxzLWYZsBUp3FEj6w4yygLjq'+
-			'LTE55hf4NbdjO6W3WI91Dfi1eEzTgfEkg'+
-			'TrcyF405FjPxhfM3mZyVQSMaGjaR3SdA2'+
-			'L0KsjGL3BWO0pc2ICggF3lQIDAQAB'+
+'IIBCgKCAQEApLufF81FW87VuSwYRqZNEE'+
+'XGoVyKx3TBvNbtAU0d5/P9Dwo/aStTsBt'+
+'NxOhSOIyOI6ZJpogWaZh19iDYvcYyk1Oi'+
+'GGM4Pl8UR0aCV4m5VJsGCkrWXSqtWFLuF'+
+'G0v4iI+ASjeew8SDtk6+/2viiVpLLHUUl'+
+'mfj1f+C7yFhiZQ0ubfG1dGMRBeuAH12tV'+
+'hqGtnZJxMPWSO6O03qivmkPfoU65GcMAY'+
+'p5uQCjYgtcxzLWYZsBUp3FEj6w4yygLjq'+
+'LTE55hf4NbdjO6W3WI91Dfi1eEzTgfEkg'+
+'TrcyF405FjPxhfM3mZyVQSMaGjaR3SdA2'+
+'L0KsjGL3BWO0pc2ICggF3lQIDAQAB'+
 			'\n-----END PUBLIC KEY-----';
 	var verifier = crypto.createVerify('sha256');
 	verifier.update(JSON.stringify(body));
@@ -45,7 +45,7 @@ app.post('/', function(req, res){
 		var result = verifier.verify(publicKey, signature, 'base64');
 		console.log("\n<!------- ******** Is valid signature # " + result + " # ******** -------!>");
 	}
-	
+
 	var type = req.body.type;
 	console.log("\n<!------- ******** type # " + type + " # ******** -------!>");
 	var handler = req.body.handler.type;
@@ -62,9 +62,9 @@ app.post('/', function(req, res){
 			{
 				output = {"text":"Hi " + req.body.params.user.first_name + " ! Slash commands are short cuts to perform tasks. Commands can also provide suggestions, just configure the command suggestion handler! :smile:"};
 			}
-			else if(componentName == "suggestioncommand")	//required consents  -- 
+			else if(componentName == "suggestioncommand")	//required consents  --
 			{
-				output = {"text":"Hi you have selected " + req.body.params.selections.length + " suggestions and first title is " + req.body.params.selections[0].title};	
+				output = {"text":"Hi you have selected " + req.body.params.selections.length + " suggestions and first title is " + req.body.params.selections[0].title};
 			}
 			else if(componentName == "invokefunctioncmd")	//required consents  -- 	//reqired a function named "function"
 			{
@@ -85,16 +85,16 @@ app.post('/', function(req, res){
 			}
 			else
 			{
-				output = {"text":"hai","type":"banner"};
+				output = {"text":"Hi, " + componentName + " is the command name"};
 			}
 		}
-		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  -- 
+		else if(handler == "suggestion_handler")	//Command suggestion handler response.     			//required consents  --
 		{
 			console.log("\n<!------- ******** Inside command suggestion handler ******** -------!>");
 			output = [{"description":"Command suggestions are helpful when you have to choose from a list of entities!","imageurl":"https://media3.giphy.com/media/Cmr1OMJ2FN0B2/giphy.gif","title":"Tip 1 👋"},{"description":"You can show upto a maximum of 50 command suggestions. :surprise:","imageurl":"https://media2.giphy.com/media/8uzVsRzOScAa4/giphy.gif","title":"Tip 2 😲"}];
 		}
 	}
-	
+
 	else if(type == "function")	//function handlers
 	{
 		if(handler == "button_handler")	//Funciton button handler
@@ -164,7 +164,7 @@ app.post('/', function(req, res){
 				var deviceType = form.values["mobile-os"].value;
 				if(deviceType == "android")
 				{
-					
+
 					androidDevicesList.forEach(function(androidDevice) {
 				        if(androidDevice.includes(searchValue))
 				        {
@@ -200,7 +200,7 @@ app.post('/', function(req, res){
 			if(message == "context")
 			{
 				output = {"context":{"timeout":"300","params":[{"question":"Please enter your name.","name":"name"},{"question":"How old are you? :smile:","name":"age"},{"suggestions":{"list":[{"text":"Male"},{"text":"Female"}]},"question":"Gender:","name":"sex"}],"id":"personal_details"},"text":"Welcome to the Zylker Ticket Booking Portal! I'll need a few details to book the ticket."};
-			}	
+			}
 			else
 			{
 				output = {"text" : "You said " + message};
@@ -245,6 +245,11 @@ app.post('/', function(req, res){
 		console.log("\n<!------- ******** Inside intallation validator ******** -------!>");
 		output = {"status" : "200"};
 	}
+
+  else if(type == "widget")	//Widget handlers
+	{
+    return {"type":"applet","tabs":[{"label":"All elements","id":"home"},{"label":"All elements (with divider)","id":"all"},{"label":"Button types","id":"buttons"},{"label":"Empty state","id":"empty"},{"label":"Instant Buttons","id":"instant"}],"active_tab":"home","sections":[{"id":1,"elements":[{"type":"title","text":"Title"},{"type":"title","text":"Alter ipsum content here...???"}]},{"id":"01","elements":[{"type":"title","text":"Title with button"},{"type":"title","text":"Alter ipsum content here...???","buttons":[{"label":"Link","type":"open.url","url":"https://www.zoho.com"}]}]},{"id":"011","elements":[{"type":"title","text":"Title with button"},{"type":"title","text":"Alter ipsum content here...???","buttons":[{"label":"Link","type":"open.url","url":"https://www.zoho.com"},{"label":"Edit section","type":"invoke.function","name":"applet","id":"banner"},{"label":"Open Channel","type":"system.api","api":"joinchannel/CD_1283959962893705602_14598233"},{"label":"Preview","type":"preview.url","url":"https://www.zoho.com/cliq/blog/task-management-on-cliq.html"}]}]},{"id":2,"elements":[{"type":"title","text":"Text"},{"type":"text","text":"Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum conten"}]},{"id":3,"elements":[{"type":"title","text":"Subtext"},{"type":"subtext","text":"Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see."}]},{"id":4,"elements":[{"type":"title","text":"Divider"},{"type":"divider"}]},{"id":5,"elements":[{"type":"title","text":"Activity"},{"type":"activity","image_url":"https://contacts.zoho.com/file?ID=45013241&t=user&fs=thumb","title":"Deva Gerald","description":"1. You could use me as a notepad to scribble down your to-dos, save important notes; and rest assured whatever you write here will be only between the two of us. You can count on me on this :wink:\nAs and when you need it, all you need to do is search for it in our chat. \n2. You can also share files, images, links that you'd like to store for future use. I'll keep them safe for you. You can reach out to me whenever you need them."}]},{"id":8,"elements":[{"type":"title","text":"Buttons"},{"type":"buttons","buttons":[{"label":"Link","type":"open.url","url":"https://www.zoho.com"},{"label":"Edit section","type":"invoke.function","name":"applet","id":"banner"},{"label":"Open Channel","type":"system.api","api":"joinchannel/CD_1283959962893705602_14598233"},{"label":"Preview","type":"preview.url","url":"https://www.zoho.com/cliq/blog/task-management-on-cliq.html"}]},{"type":"buttons","buttons":[{"label":"Edit section","type":"invoke.function","name":"applet","id":"section"},{"label":"Form Edit Section","type":"invoke.function","name":"applet","id":"formsection"},{"label":"Banner","type":"invoke.function","name":"applet","id":"banner"},{"label":"Edit Whole Tab","type":"invoke.function","name":"applet","id":"tab"},{"label":"Form Edit Tab","type":"invoke.function","name":"applet","id":"formtab"}]}]},{"id":9,"elements":[{"type":"title","text":"Table"},{"type":"table","headers":["Issue ID","Title","Assigned To","Severity","Status"],"rows":[{"Issue ID":"[Zoho3864](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802195/)","Title":"I searched as Anand in Global search but the results were only from messages search","Severity":"Major","Status":"Open"},{"Issue ID":"[Zoho3863](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802169/)","Title":"Quotes displaying in search","Assigned To":"Amudha Vigneshwaran K M P","Severity":"Major","Status":"Open"},{"Issue ID":"[Zoho3862](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802143/)","Title":"Created a new external channel and got this! Tried setting an image twice, the requests failed.","Assigned To":"Avinash B","Severity":"Major","Status":"Open"},{"Issue ID":"[Zoho3861](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802107/)","Title":"I opened the chat and pressed esc, now i cant open the chat again","Assigned To":"Aathishithan G","Severity":"Major","Status":"Open"},{"Issue ID":"[Zoho3860](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802047/)","Title":"Focus after placeholder.","Assigned To":"Bhim Singh Dangi","Severity":"Major","Status":"Open"},{"Issue ID":"[Zoho3859](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802027/)","Title":"Got this Broken UI all of a sudden when i was entering smiley code","Assigned To":"Bhim Singh Dangi","Severity":"Major","Status":"Open"},{"Issue ID":"[Zoho3858](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012802001/)","Title":"Not able to add comma immediately after a hyperlink. Able to add it only with a space","Assigned To":"Bhim Singh Dangi","Severity":"Major","Status":"Closed"},{"Issue ID":"[Zoho3857](https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012789259/)","Title":"In dark mode, some of the keywords and operators are so dark and not visible in deluge editor.","Assigned To":"Dilip Kumar","Severity":"Major","Status":"Open"}],"style":{"width":[10,50,20,10,10]}}]},{"id":10,"elements":[{"type":"title","text":"Fields"},{"type":"fields","data":[{"Issue ID":"Zoho3765 a@b.com :grinning!:"},{"Title":"Have cleared the conversation the pinned msg is not cleared. If user clicks the pinned message system keeps on loading in chat window."},{"Assigned To":"Veeramani T :smile:"},{"Severity":"Major"},{"Link":"https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012106142/"},{"Status":"Closed"},{"Chumma":"Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum conten"}]}]},{"id":11,"elements":[{"type":"title","text":"Fields with Multi Columns"},{"style":{"short":true},"type":"fields","data":[{"Issue ID":"Zoho3765 a@b.com :grinning!:"},{"Title":"Have cleared the conversation the pinned msg is not cleared. If user clicks the pinned message system keeps on loading in chat window."},{"Assigned To":"Veeramani T :smile:"},{"Severity":"Major"},{"Link":"https://projects.zoho.com/portal/2990883#buginfo/218335000000008017/218335000012106142/"},{"Status":"Closed"},{"Chumma":"Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. Lorem ipsum content here. This is a kind of announcement which can be set by anyone for all to see. Lorem ipsum content here. Lorem ipsum conten"}]}]}]};
+  }
 
 	response.output = output;
 	console.log("\n<!------- ******** Execution Response ******** -------!>\n" + JSON.stringify(response) + "\n<!------- ******** End of Execution Response ******** -------!>");
